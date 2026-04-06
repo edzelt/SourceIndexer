@@ -1,7 +1,7 @@
 # === CMakeLists.txt ===
 cmake_minimum_required(VERSION 3.16)
 
-project(SourcebreakerIndexer VERSION 0.1 LANGUAGES CXX)
+project(SourceIndexer VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,7 +25,7 @@ find_path(CLANG_INCLUDE_DIR clang-c/Index.h
 find_library(CLANG_LIBRARY NAMES libclang
     PATHS "C:/Program Files/LLVM/lib")
 
-add_executable(SourcebreakerIndexer
+add_executable(SourceIndexer
     main.cpp
     ProjectDetector.h
     ProjectDetector.cpp
@@ -43,13 +43,13 @@ add_executable(SourcebreakerIndexer
     IndexProgressDialog.cpp
 )
 
-target_include_directories(SourcebreakerIndexer PRIVATE ${CLANG_INCLUDE_DIR})
+target_include_directories(SourceIndexer PRIVATE ${CLANG_INCLUDE_DIR})
 
-target_link_libraries(SourcebreakerIndexer PRIVATE
+target_link_libraries(SourceIndexer PRIVATE
     Qt6::Core
     Qt6::Widgets
     Qt6::Sql
     ${CLANG_LIBRARY}
 )
 
-qt_finalize_executable(SourcebreakerIndexer)
+qt_finalize_executable(SourceIndexer)
